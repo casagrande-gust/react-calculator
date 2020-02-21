@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 /**
  * DualDisplay Component
@@ -8,9 +8,20 @@ import { View } from 'react-native';
  * A component that renders two containers,
  * main and secondary, to display string values.
  */
-export const DualDisplay = () => (
-  <View />
-);
+export const DualDisplay = (props) => {
+  const { main, secondary } = props;
+
+  return (
+    <View>
+      <View>
+        <Text>{secondary}</Text>
+      </View>
+      <View>
+        <Text>{main}</Text>
+      </View>
+    </View>
+  );
+};
 
 export default DualDisplay;
 
