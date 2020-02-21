@@ -1,6 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+
+import Colors from '../constants/colors';
+
+const styles = StyleSheet.create({
+  container: {
+    width: '80%',
+    height: '20%',
+    borderRadius: 10,
+    backgroundColor: Colors.accent,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 25,
+    marginHorizontal: '10%',
+  },
+});
 
 /**
  * DualDisplay Component
@@ -12,7 +27,7 @@ export const DualDisplay = (props) => {
   const { main, secondary } = props;
 
   return (
-    <View>
+    <View style={styles.container}>
       <View>
         <Text>{secondary}</Text>
       </View>
