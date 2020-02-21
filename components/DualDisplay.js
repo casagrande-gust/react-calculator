@@ -33,6 +33,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  mainText: {
+    color: Colors.white,
+    fontSize: 36,
+  },
 });
 
 /**
@@ -50,7 +54,7 @@ export const DualDisplay = (props) => {
         <Text style={styles.secondaryText}>{secondary}</Text>
       </View>
       <View style={styles.mainContainer}>
-        <Text>{main}</Text>
+        <Text style={styles.mainText}>{main}</Text>
       </View>
     </View>
   );
