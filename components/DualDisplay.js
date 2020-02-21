@@ -23,6 +23,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.white,
   },
+  secondaryText: {
+    color: Colors.white,
+    fontSize: 20,
+  },
 });
 
 /**
@@ -37,7 +41,7 @@ export const DualDisplay = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.secondaryContainer}>
-        <Text>{secondary}</Text>
+        <Text style={styles.secondaryText}>{secondary}</Text>
       </View>
       <View>
         <Text>{main}</Text>
