@@ -15,6 +15,14 @@ const styles = StyleSheet.create({
     marginTop: 25,
     marginHorizontal: '10%',
   },
+  secondaryContainer: {
+    flex: 3,
+    width: '90%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.white,
+  },
 });
 
 /**
@@ -28,7 +36,7 @@ export const DualDisplay = (props) => {
 
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.secondaryContainer}>
         <Text>{secondary}</Text>
       </View>
       <View>
