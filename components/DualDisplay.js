@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { View } from 'react-native';
 
@@ -12,3 +13,15 @@ export const DualDisplay = () => (
 );
 
 export default DualDisplay;
+
+// Default props for DualDisplay.
+DualDisplay.defaultProps = {
+  main: '',
+  secondary: '',
+};
+
+// PropTypes for DualDisplay props.
+DualDisplay.propTypes = {
+  main: PropTypes.string,
+  secondary: PropTypes.string,
+};
