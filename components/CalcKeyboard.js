@@ -57,8 +57,22 @@ export const CalcKeyboard = (props) => {
     </View>
   );
 
+  /**
+   * createKeyboard
+   *
+   * Creates multiple rows of buttons.
+   * @param {*} rows an array containing arrays of buttons,
+   *                 as defined in the keyboardButtons constant.
+   * @returns JSX code that renders the calculator's keyboard.
+   */
+  const createKeyboard = (rows) => (
+    rows.map((row, index) => createBtnRow(row, index))
+  );
+
   return (
-    <View />
+    <View>
+      {createKeyboard(keyboardButtons)}
+    </View>
   );
 };
 
