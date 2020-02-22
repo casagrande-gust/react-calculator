@@ -8,6 +8,7 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/no-named-as-default': 'off',
+    'react/jsx-no-bind': 'off',
   },
   'globals': {
     'fetch': false
