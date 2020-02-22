@@ -42,7 +42,7 @@ export const CalcKeyboard = (props) => {
    * @returns JSX code that renders a row of buttons in the keyboard.
    */
   const createBtnRow = (buttons, index) => (
-    <View key={index}>
+    <View key={`row ${index}`}>
       {
         buttons.map((button) => (
           <TouchableOpacity
