@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 export const CalcKeyboard = (props) => {
   const { numericBtnFn, operatorBtnFn, clearBtnFn } = props;
@@ -31,6 +31,31 @@ export const CalcKeyboard = (props) => {
       { title: '/', buttonFn: operatorBtnFn },
     ],
   ];
+
+  /**
+   * createBtnRow
+   *
+   * @param {*} buttons an array containing button objects,
+   *                    as defined in the keyboardButtons constant.
+   * @param {*} index   the index of a row, used as key property
+   *                    value when rendering.
+   * @returns JSX code that renders a row of buttons in the keyboard.
+   */
+  const createBtnRow = (buttons, index) => (
+    <View key={index}>
+      {
+        buttons.map((button) => (
+          <TouchableOpacity
+            activeOpacity={0.9}
+            key={`${button.title} container`}
+            onPress={button.buttonFn.bind(this, button.title)}
+          >
+            <Text key={button.title}>{button.title}</Text>
+          </TouchableOpacity>
+        ))
+      }
+    </View>
+  );
 
   return (
     <View />
