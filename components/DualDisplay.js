@@ -62,14 +62,25 @@ export const DualDisplay = (props) => {
 
 export default DualDisplay;
 
+DualDisplay.propTypes = {
+  /**
+   * main
+   *
+   * String displayed in the main container, which is located at
+   * the bottom of the component. Appears in a large font size.
+   */
+  main: PropTypes.string,
+  /**
+   * secondary
+   *
+   * String displayed in the secondary container, which is located at
+   * the top of the component. Appears in a smaller font size.
+   */
+  secondary: PropTypes.string,
+};
+
 // Default props for DualDisplay.
 DualDisplay.defaultProps = {
   main: '',
   secondary: '',
-};
-
-// PropTypes for DualDisplay props.
-DualDisplay.propTypes = {
-  main: PropTypes.string,
-  secondary: PropTypes.string,
 };
