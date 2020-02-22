@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { View } from 'react-native';
 
@@ -11,3 +12,13 @@ export const Header = () => (
 );
 
 export default Header;
+
+// Default props for Header.
+Header.defaultProps = {
+  title: '',
+};
+
+// PropTypes for Header.
+Header.propTypes = {
+  title: PropTypes.string,
+};
