@@ -1,6 +1,43 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+
+import Colors from '../constants/colors';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '90%',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginHorizontal: '5%',
+    marginVertical: 10,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    width: '100%',
+    height: '24%',
+    justifyContent: 'space-between',
+  },
+  button: {
+    width: '24%',
+    backgroundColor: Colors.calcButton,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 0.5,
+    borderColor: Colors.white,
+    borderRadius: 10,
+  },
+  buttonText: {
+    fontSize: 20,
+    color: Colors.white,
+  },
+});
 
 export const CalcKeyboard = (props) => {
   const { numericBtnFn, operatorBtnFn, clearBtnFn } = props;
@@ -42,15 +79,16 @@ export const CalcKeyboard = (props) => {
    * @returns JSX code that renders a row of buttons in the keyboard.
    */
   const createBtnRow = (buttons, index) => (
-    <View key={`row ${index}`}>
+    <View key={`row ${index}`} style={styles.buttonRow}>
       {
         buttons.map((button) => (
           <TouchableOpacity
+            style={styles.button}
             activeOpacity={0.9}
             key={`${button.title} container`}
             onPress={button.buttonFn.bind(this, button.title)}
           >
-            <Text key={button.title}>{button.title}</Text>
+            <Text style={styles.buttonText} key={button.title}>{button.title}</Text>
           </TouchableOpacity>
         ))
       }
@@ -70,7 +108,7 @@ export const CalcKeyboard = (props) => {
   );
 
   return (
-    <View>
+    <View style={styles.container}>
       {createKeyboard(keyboardButtons)}
     </View>
   );
