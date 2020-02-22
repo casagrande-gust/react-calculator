@@ -35,10 +35,10 @@ export const CalcKeyboard = (props) => {
   /**
    * createBtnRow
    *
-   * @param {*} buttons an array containing button objects,
-   *                    as defined in the keyboardButtons constant.
-   * @param {*} index   the index of a row, used as key property
-   *                    value when rendering.
+   * @param {Object[]} buttons an array containing button objects,
+   *                           as defined in the keyboardButtons constant.
+   * @param {number}   index   the index of a row, used as key property
+   *                           value when rendering.
    * @returns JSX code that renders a row of buttons in the keyboard.
    */
   const createBtnRow = (buttons, index) => (
@@ -61,8 +61,8 @@ export const CalcKeyboard = (props) => {
    * createKeyboard
    *
    * Creates multiple rows of buttons.
-   * @param {*} rows an array containing arrays of buttons,
-   *                 as defined in the keyboardButtons constant.
+   * @param {Object[]} rows an array containing arrays of buttons,
+   *                        as defined in the keyboardButtons constant.
    * @returns JSX code that renders the calculator's keyboard.
    */
   const createKeyboard = (rows) => (
