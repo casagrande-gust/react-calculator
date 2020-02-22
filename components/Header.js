@@ -36,12 +36,16 @@ export const Header = (props) => {
 
 export default Header;
 
+Header.propTypes = {
+  /**
+   * title
+   *
+   * String displayed inside of a blue rectangular container.
+   */
+  title: PropTypes.string,
+};
+
 // Default props for Header.
 Header.defaultProps = {
   title: '',
-};
-
-// PropTypes for Header.
-Header.propTypes = {
-  title: PropTypes.string,
 };
