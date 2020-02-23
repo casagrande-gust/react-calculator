@@ -67,7 +67,7 @@ export const CalcKeyboard = (props) => {
       { title: 'x', buttonFn: operatorBtnFn },
     ],
     [
-      { title: 'CLR', buttonFn: clearBtnFn },
+      { title: '.', buttonFn: numericBtnFn },
       { title: '0', buttonFn: numericBtnFn },
       { title: '=', buttonFn: equalBtnFn },
       { title: '/', buttonFn: operatorBtnFn },
@@ -115,6 +115,12 @@ export const CalcKeyboard = (props) => {
   return (
     <View style={styles.container}>
       {createKeyboard(keyboardButtons)}
+      <TouchableOpacity
+        onPress={clearBtnFn}
+        activeOpacity={0.9}
+      >
+        <Text style={styles.buttonText}>CLEAR</Text>
+      </TouchableOpacity>
     </View>
   );
 };
