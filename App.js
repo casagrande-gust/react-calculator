@@ -1,10 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+import CalcKeyboard from './components/CalcKeyboard';
+import DualDisplay from './components/DualDisplay';
+import Header from './components/Header';
+import AppStrings from './constants/app-strings';
+import Colors from './constants/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.black,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -13,7 +19,9 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Header title={AppStrings.appTitle} />
+      <DualDisplay />
+      <CalcKeyboard />
     </View>
   );
 }
