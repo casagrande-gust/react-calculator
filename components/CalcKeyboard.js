@@ -40,7 +40,12 @@ const styles = StyleSheet.create({
 });
 
 export const CalcKeyboard = (props) => {
-  const { numericBtnFn, operatorBtnFn, clearBtnFn } = props;
+  const {
+    numericBtnFn,
+    operatorBtnFn,
+    equalBtnFn,
+    clearBtnFn,
+  } = props;
 
   const keyboardButtons = [
     [
@@ -64,7 +69,7 @@ export const CalcKeyboard = (props) => {
     [
       { title: 'CLR', buttonFn: clearBtnFn },
       { title: '0', buttonFn: numericBtnFn },
-      { title: '=', buttonFn: operatorBtnFn },
+      { title: '=', buttonFn: equalBtnFn },
       { title: '/', buttonFn: operatorBtnFn },
     ],
   ];
@@ -130,6 +135,12 @@ CalcKeyboard.propTypes = {
    */
   operatorBtnFn: PropTypes.func,
   /**
+   * equalBtnFn
+   *
+   * Function executed when the '=' button is pressed.
+   */
+  equalBtnFn: PropTypes.func,
+  /**
    * clearBtnFn
    *
    * Function executed when the "clear" button is pressed.
@@ -141,5 +152,6 @@ CalcKeyboard.propTypes = {
 CalcKeyboard.defaultProps = {
   numericBtnFn: () => {},
   operatorBtnFn: () => {},
+  equalBtnFn: () => {},
   clearBtnFn: () => {},
 };
