@@ -5,11 +5,12 @@ import CalcKeyboard from './components/CalcKeyboard';
 import DualDisplay from './components/DualDisplay';
 import Header from './components/Header';
 import AppStrings from './constants/app-strings';
+import Colors from './constants/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.black,
     alignItems: 'center',
     justifyContent: 'center',
   },
