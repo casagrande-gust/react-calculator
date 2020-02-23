@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   buttonRow: {
     flexDirection: 'row',
     width: '100%',
-    height: '24%',
+    height: '20%',
     justifyContent: 'space-between',
   },
   button: {
@@ -33,6 +33,15 @@ const styles = StyleSheet.create({
     borderColor: Colors.white,
     borderRadius: 10,
   },
+  clearButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.calcButton,
+    width: '100%',
+    borderWidth: 0.5,
+    borderColor: Colors.white,
+    borderRadius: 10,
+  },
   buttonText: {
     fontSize: 20,
     color: Colors.white,
@@ -40,7 +49,12 @@ const styles = StyleSheet.create({
 });
 
 export const CalcKeyboard = (props) => {
-  const { numericBtnFn, operatorBtnFn, clearBtnFn } = props;
+  const {
+    numericBtnFn,
+    operatorBtnFn,
+    equalBtnFn,
+    clearBtnFn,
+  } = props;
 
   const keyboardButtons = [
     [
@@ -62,9 +76,9 @@ export const CalcKeyboard = (props) => {
       { title: 'x', buttonFn: operatorBtnFn },
     ],
     [
-      { title: 'CLR', buttonFn: clearBtnFn },
+      { title: '.', buttonFn: numericBtnFn },
       { title: '0', buttonFn: numericBtnFn },
-      { title: '=', buttonFn: operatorBtnFn },
+      { title: '=', buttonFn: equalBtnFn },
       { title: '/', buttonFn: operatorBtnFn },
     ],
   ];
@@ -110,6 +124,13 @@ export const CalcKeyboard = (props) => {
   return (
     <View style={styles.container}>
       {createKeyboard(keyboardButtons)}
+      <TouchableOpacity
+        onPress={clearBtnFn}
+        activeOpacity={0.9}
+        style={styles.clearButton}
+      >
+        <Text style={styles.buttonText}>CLEAR</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -130,6 +151,12 @@ CalcKeyboard.propTypes = {
    */
   operatorBtnFn: PropTypes.func,
   /**
+   * equalBtnFn
+   *
+   * Function executed when the '=' button is pressed.
+   */
+  equalBtnFn: PropTypes.func,
+  /**
    * clearBtnFn
    *
    * Function executed when the "clear" button is pressed.
@@ -141,5 +168,6 @@ CalcKeyboard.propTypes = {
 CalcKeyboard.defaultProps = {
   numericBtnFn: () => {},
   operatorBtnFn: () => {},
+  equalBtnFn: () => {},
   clearBtnFn: () => {},
 };
