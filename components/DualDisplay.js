@@ -6,14 +6,14 @@ import Colors from '../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    width: '80%',
+    width: '90%',
     height: '20%',
     borderRadius: 10,
     backgroundColor: Colors.accent,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 25,
-    marginHorizontal: '10%',
+    marginHorizontal: '5%',
   },
   secondaryContainer: {
     flex: 3,
