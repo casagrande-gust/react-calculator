@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   buttonRow: {
     flexDirection: 'row',
     width: '100%',
-    height: '24%',
+    height: '20%',
     justifyContent: 'space-between',
   },
   button: {
@@ -29,6 +29,15 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.calcButton,
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 0.5,
+    borderColor: Colors.white,
+    borderRadius: 10,
+  },
+  clearButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.calcButton,
+    width: '100%',
     borderWidth: 0.5,
     borderColor: Colors.white,
     borderRadius: 10,
@@ -118,6 +127,7 @@ export const CalcKeyboard = (props) => {
       <TouchableOpacity
         onPress={clearBtnFn}
         activeOpacity={0.9}
+        style={styles.clearButton}
       >
         <Text style={styles.buttonText}>CLEAR</Text>
       </TouchableOpacity>
