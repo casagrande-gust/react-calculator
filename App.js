@@ -132,7 +132,7 @@ export default function App() {
     if (operator) {
       Alert.alert(
         'Operator already chosen!',
-        'If you want to change the operator, press the CLR button.',
+        'If you want to change the operator, press the CLEAR button.',
         [{ text: 'Ok', style: 'cancel' }],
       );
       return;
