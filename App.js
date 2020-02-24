@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 
 import CalcKeyboard from './components/CalcKeyboard';
 import DualDisplay from './components/DualDisplay';
@@ -82,11 +82,42 @@ export default function App() {
     setDecimalPressed(false);
   };
 
+  /**
+   * numericBtnHandler
+   *
+   * Executes when the user presses 0-9 or the '.' button.
+   * Updates the current value being built and the history of user input.
+   * @param {string} numericInput the title of the button pressed by the user.
+   */
+  const numericBtnHandler = (numericInput) => {
+    // If there's a resultValue, clear it.
+    if (resultValue) {
+      setResultValue('');
+    }
+    if (numericInput === '.') {
+      // If the user pressed '.', check if the current value
+      // already has a decimal point. Throw an error if true.
+      if (decimalPressed) {
+        Alert.alert(
+          'Math Error!',
+          'You can not add two decimal points to the same value',
+          [{ text: 'Ok', style: 'cancel' }],
+        );
+        return;
+      }
+      // Otherwise, set decimalPressed to true.
+      setDecimalPressed(true);
+    }
+    // Update current value and history with new input.
+    setCurrValue(currValue + numericInput);
+    setHistory(history + numericInput);
+  };
+
   return (
     <View style={styles.container}>
       <Header title={AppStrings.appTitle} />
-      <DualDisplay />
-      <CalcKeyboard clearBtnFn={clearBtnHandler} />
+      <DualDisplay main={currValue} secondary={history} />
+      <CalcKeyboard clearBtnFn={clearBtnHandler} numericBtnFn={numericBtnHandler} />
     </View>
   );
 }
