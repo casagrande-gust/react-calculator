@@ -213,7 +213,7 @@ export default function App() {
     setResultValue(result);
     setCurrValue(result);
     setOperator('');
-    setDecimalPressed('');
+    setDecimalPressed(false);
     setPrevValue('');
   };
 
