@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import CalcKeyboard from './components/CalcKeyboard';
@@ -17,6 +17,14 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
+  // State variables and setter functions.
+  const [prevValue, setPrevValue] = useState('');
+  const [currValue, setCurrValue] = useState('');
+  const [operator, setOperator] = useState('');
+  const [resultValue, setResultValue] = useState('');
+  const [history, setHistory] = useState('');
+  const [decimalPressed, setDecimalPressed] = useState(false);
+
   return (
     <View style={styles.container}>
       <Header title={AppStrings.appTitle} />
