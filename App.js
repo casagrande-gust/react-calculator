@@ -139,12 +139,13 @@ export default function App() {
     }
     // If user did not input a value before choosing
     // an operator, display an error message.
-    if (!currValue) {
+    if (!currValue || Number.isNaN(currValue)) {
       Alert.alert(
         'No Value!',
         'Please insert a value before choosing an operation.',
         [{ text: 'Ok', style: 'cancel' }],
       );
+      setCurrValue('');
       return;
     }
     // If user presses an operator button right after a calculation,
