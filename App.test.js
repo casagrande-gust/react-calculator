@@ -90,4 +90,14 @@ describe('App Component', () => {
       [{ text: 'Ok', style: 'cancel' }],
     );
   });
+
+  it('should display an error message when trying to select an operator without a value', () => {
+    const spy = jest.spyOn(Alert, 'alert');
+    fireEvent.press(testFuncs.getByText('x'));
+    expect(spy).toHaveBeenCalledWith(
+      'No Value!',
+      'Please insert a value before choosing an operation.',
+      [{ text: 'Ok', style: 'cancel' }],
+    );
+  });
 });
