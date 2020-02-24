@@ -100,4 +100,17 @@ describe('App Component', () => {
       [{ text: 'Ok', style: 'cancel' }],
     );
   });
+
+  it('should display a warning message when trying to select an operator twice', () => {
+    const spy = jest.spyOn(Alert, 'alert');
+    fireEvent.press(testFuncs.getByText('8'));
+    fireEvent.press(testFuncs.getByText('+'));
+    fireEvent.press(testFuncs.getByText('6'));
+    fireEvent.press(testFuncs.getByText('x'));
+    expect(spy).toHaveBeenCalledWith(
+      'Operator already chosen!',
+      'If you want to change the operator, press the CLR button.',
+      [{ text: 'Ok', style: 'cancel' }],
+    );
+  });
 });
