@@ -122,8 +122,8 @@ export default function App() {
    * operatorBtnHandler
    *
    * Executes when user presses one of the operation buttons: +, -, x or /.
-   * Saves the current value as the first operand, reset
-   * appropriate state values to build the second operand.
+   * Saves the current value as the first operand, resets appropriate
+   * state values to build the second operand.
    * @param {string} chosenOperator the title of the operator chosen for calculation.
    */
   const operatorBtnHandler = (chosenOperator) => {
