@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/react-native';
 import React from 'react';
+import { Alert } from 'react-native';
 
 import App from './App';
 import AppStrings from './constants/app-strings';
@@ -75,5 +76,18 @@ describe('App Component', () => {
     fireEvent.press(testFuncs.getByText('CLEAR'));
     expect(testFuncs.queryAllByText('12.00').length).toEqual(0);
     expect(testFuncs.queryAllByText('5 + 7').length).toEqual(0);
+  });
+
+  it('should display an error message when trying to divide by zero', () => {
+    const spy = jest.spyOn(Alert, 'alert');
+    fireEvent.press(testFuncs.getByText('3'));
+    fireEvent.press(testFuncs.getByText('/'));
+    fireEvent.press(testFuncs.getByText('0'));
+    fireEvent.press(testFuncs.getByText('='));
+    expect(spy).toHaveBeenCalledWith(
+      'Math Error!',
+      'You can not divide a number by 0',
+      [{ text: 'Ok', style: 'cancel' }],
+    );
   });
 });
