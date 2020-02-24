@@ -161,6 +161,62 @@ export default function App() {
     setDecimalPressed(false);
   };
 
+  const equalsBtnHandler = () => {
+    // Convert strings stored in State variables to float numbers.
+    const a = parseFloat(prevValue, 10);
+    const b = parseFloat(currValue, 10);
+    // If conversion fails, display an error message, clear State and return.
+    if (Number.isNaN(a) || Number.isNaN(b)) {
+      Alert.alert(
+        'Calculator Error!',
+        'Please enter two values and an operator',
+        [{ text: 'Ok', style: 'cancel' }],
+      );
+      clearBtnHandler();
+      return;
+    }
+    let numericResult;
+    switch (operator) {
+      case '+':
+        numericResult = a + b;
+        break;
+      case '-':
+        numericResult = a - b;
+        break;
+      case 'x':
+        numericResult = a * b;
+        break;
+      case '/':
+        if (b) {
+          const value = a / b;
+          numericResult = Math.floor(value * 100) / 100;
+        } else {
+          Alert.alert(
+            'Math Error!',
+            'You can not divide a number by 0',
+            [{ text: 'Ok', style: 'cancel' }],
+          );
+          clearBtnHandler();
+          return;
+        }
+        break;
+      default:
+        Alert.alert(
+          'Calculator Error!',
+          'Please enter two values and an operator',
+          [{ text: 'Ok', style: 'cancel' }],
+        );
+        clearBtnHandler();
+        return;
+    }
+    const result = numericResult.toFixed(2);
+    setResultValue(result);
+    setCurrValue(result);
+    setOperator('');
+    setDecimalPressed('');
+    setPrevValue('');
+  };
+
   return (
     <View style={styles.container}>
       <Header title={AppStrings.appTitle} />
@@ -169,6 +225,7 @@ export default function App() {
         clearBtnFn={clearBtnHandler}
         numericBtnFn={numericBtnHandler}
         operatorBtnFn={operatorBtnHandler}
+        equalBtnFn={equalsBtnHandler}
       />
     </View>
   );
