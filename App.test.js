@@ -23,4 +23,45 @@ describe('App Component', () => {
     // Value appears in both containers of DualDisplay
     expect(testFuncs.getAllByText('5.73').length).toEqual(2);
   });
+
+  it('should sum two numbers correctly', () => {
+    fireEvent.press(testFuncs.getByText('5'));
+    fireEvent.press(testFuncs.getByText('+'));
+    fireEvent.press(testFuncs.getByText('7'));
+    fireEvent.press(testFuncs.getByText('='));
+    // Display history of user inputs in upper container of DualDisplay
+    expect(testFuncs.getAllByText('5 + 7').length).toEqual(1);
+    // Display result of calculation in bottom container of DualDisplay
+    expect(testFuncs.getAllByText('12.00').length).toEqual(1);
+  });
+
+  it('should subtract two numbers correctly', () => {
+    fireEvent.press(testFuncs.getByText('9'));
+    fireEvent.press(testFuncs.getByText('-'));
+    fireEvent.press(testFuncs.getByText('2'));
+    fireEvent.press(testFuncs.getByText('='));
+    expect(testFuncs.getAllByText('9 - 2').length).toEqual(1);
+    expect(testFuncs.getAllByText('7.00').length).toEqual(1);
+  });
+
+  it('should multiply two numbers correctly', () => {
+    fireEvent.press(testFuncs.getByText('8'));
+    fireEvent.press(testFuncs.getByText('x'));
+    fireEvent.press(testFuncs.getByText('6'));
+    fireEvent.press(testFuncs.getByText('='));
+    expect(testFuncs.getAllByText('8 x 6').length).toEqual(1);
+    expect(testFuncs.getAllByText('48.00').length).toEqual(1);
+  });
+
+  it('should divide two numbers correctly', () => {
+    fireEvent.press(testFuncs.getByText('4'));
+    fireEvent.press(testFuncs.getByText('5'));
+    fireEvent.press(testFuncs.getByText('/'));
+    fireEvent.press(testFuncs.getByText('4'));
+    fireEvent.press(testFuncs.getByText('.'));
+    fireEvent.press(testFuncs.getByText('5'));
+    fireEvent.press(testFuncs.getByText('='));
+    expect(testFuncs.getAllByText('45 / 4.5').length).toEqual(1);
+    expect(testFuncs.getAllByText('10.00').length).toEqual(1);
+  });
 });
