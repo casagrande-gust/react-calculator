@@ -17,12 +17,54 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
-  // State variables and setter functions.
+  /**
+   * State Variables and Setter Functions
+   */
+
+  /**
+   * prevValue
+   *
+   * Stores the value previously built via user input,
+   * or the result of the previous operation.
+   */
   const [prevValue, setPrevValue] = useState('');
+
+  /**
+   * currValue
+   *
+   * Stores the value currently being built via user input.
+   */
   const [currValue, setCurrValue] = useState('');
+
+  /**
+   * operator
+   *
+   * Stores the operator chosen by the user
+   * for the current calculation.
+   */
   const [operator, setOperator] = useState('');
+
+  /**
+   * resultValue
+   *
+   * The result of the current calculation.
+   */
   const [resultValue, setResultValue] = useState('');
+
+  /**
+   * history
+   *
+   * A string storing all user inputs, representing
+   * the current calculation/number being built.
+   */
   const [history, setHistory] = useState('');
+
+  /**
+   * decimalPressed
+   *
+   * Represents whether or not the user has
+   * added a decimal point to the current value.
+   */
   const [decimalPressed, setDecimalPressed] = useState(false);
 
   return (
