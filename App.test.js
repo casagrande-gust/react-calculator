@@ -113,4 +113,14 @@ describe('App Component', () => {
       [{ text: 'Ok', style: 'cancel' }],
     );
   });
+
+  it('should display an error message when trying to calculate without values', () => {
+    const spy = jest.spyOn(Alert, 'alert');
+    fireEvent.press(testFuncs.getByText('='));
+    expect(spy).toHaveBeenCalledWith(
+      'Calculator Error!',
+      'Please enter two values and an operator',
+      [{ text: 'Ok', style: 'cancel' }],
+    );
+  });
 });
