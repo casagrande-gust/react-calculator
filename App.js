@@ -167,6 +167,12 @@ export default function App() {
     setDecimalPressed(false);
   };
 
+  /**
+   * equalsBtnHandler
+   *
+   * Executed when users presses the '=' button.
+   * Performs the calculation and sets result value for display.
+   */
   const equalsBtnHandler = () => {
     // Convert strings stored in State variables to float numbers.
     const a = parseFloat(prevValue, 10);
