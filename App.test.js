@@ -2,10 +2,16 @@ import { render } from '@testing-library/react-native';
 import React from 'react';
 
 import App from './App';
+import AppStrings from './constants/app-strings';
 
 describe('App Component', () => {
-  it('should display the initial message', () => {
-    const { getByText } = render(<App />);
-    expect(getByText('Open up App.js to start working on your app!')).toBeTruthy();
+  let testFuncs = {};
+
+  beforeEach(() => {
+    testFuncs = render(<App />);
+  });
+
+  it('should display the app header containing the title', () => {
+    expect(testFuncs.getAllByText(AppStrings.appTitle).length).toEqual(1);
   });
 });
