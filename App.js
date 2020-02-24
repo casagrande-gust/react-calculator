@@ -90,27 +90,32 @@ export default function App() {
    * @param {string} numericInput the title of the button pressed by the user.
    */
   const numericBtnHandler = (numericInput) => {
-    // If there's a resultValue, clear it.
+    // If there's a resultValue, clear resultValue
+    // and set current value and history to numericInput.
     if (resultValue) {
       setResultValue('');
-    }
-    if (numericInput === '.') {
-      // If the user pressed '.', check if the current value
-      // already has a decimal point. Throw an error if true.
-      if (decimalPressed) {
-        Alert.alert(
-          'Math Error!',
-          'You can not add two decimal points to the same value',
-          [{ text: 'Ok', style: 'cancel' }],
-        );
-        return;
+      setCurrValue(numericInput);
+      setHistory(numericInput);
+      setDecimalPressed(numericInput === '.');
+    } else {
+      if (numericInput === '.') {
+        // If the user pressed '.', check if the current value
+        // already has a decimal point. Throw an error if true.
+        if (decimalPressed) {
+          Alert.alert(
+            'Math Error!',
+            'You can not add two decimal points to the same value',
+            [{ text: 'Ok', style: 'cancel' }],
+          );
+          return;
+        }
+        // Otherwise, set decimalPressed to true.
+        setDecimalPressed(true);
       }
-      // Otherwise, set decimalPressed to true.
-      setDecimalPressed(true);
+      // Update current value and history with new input.
+      setCurrValue(currValue + numericInput);
+      setHistory(history + numericInput);
     }
-    // Update current value and history with new input.
-    setCurrValue(currValue + numericInput);
-    setHistory(history + numericInput);
   };
 
   /**
