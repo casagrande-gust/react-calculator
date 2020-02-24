@@ -64,4 +64,16 @@ describe('App Component', () => {
     expect(testFuncs.getAllByText('45 / 4.5').length).toEqual(1);
     expect(testFuncs.getAllByText('10.00').length).toEqual(1);
   });
+
+  it('should clear the DualDisplay values after pressing the CLEAR button', () => {
+    fireEvent.press(testFuncs.getByText('5'));
+    fireEvent.press(testFuncs.getByText('+'));
+    fireEvent.press(testFuncs.getByText('7'));
+    fireEvent.press(testFuncs.getByText('='));
+    expect(testFuncs.queryAllByText('12.00').length).toEqual(1);
+    expect(testFuncs.queryAllByText('5 + 7').length).toEqual(1);
+    fireEvent.press(testFuncs.getByText('CLEAR'));
+    expect(testFuncs.queryAllByText('12.00').length).toEqual(0);
+    expect(testFuncs.queryAllByText('5 + 7').length).toEqual(0);
+  });
 });
