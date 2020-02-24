@@ -113,11 +113,63 @@ export default function App() {
     setHistory(history + numericInput);
   };
 
+  /**
+   * operatorBtnHandler
+   *
+   * Executes when user presses one of the operation buttons: +, -, x or /.
+   * Saves the current value as the first operand, reset
+   * appropriate state values to build the second operand.
+   * @param {string} chosenOperator the title of the operator chosen for calculation.
+   */
+  const operatorBtnHandler = (chosenOperator) => {
+    // If user already chose an operator for the
+    // current calculation, display an error message.
+    if (operator) {
+      Alert.alert(
+        'Operator already chosen!',
+        'If you want to change the operator, press the CLR button.',
+        [{ text: 'Ok', style: 'cancel' }],
+      );
+      return;
+    }
+    // If user did not input a value before choosing
+    // an operator, display an error message.
+    if (!currValue) {
+      Alert.alert(
+        'No Value!',
+        'Please insert a value before choosing an operation.',
+        [{ text: 'Ok', style: 'cancel' }],
+      );
+      return;
+    }
+    // If user presses an operator button right after a calculation,
+    // use the result of the calculation as the first new operand.
+    if (resultValue) {
+      setPrevValue(resultValue);
+      setResultValue('');
+    } else {
+      // Otherwise, set currently built value as the first operand.
+      setPrevValue(currValue);
+    }
+    // Reset current value string to build second operand.
+    setCurrValue('');
+    // Set operator for current calculation.
+    setOperator(chosenOperator);
+    // Update user input history.
+    setHistory(`${currValue} ${chosenOperator} `);
+    // Reset decimalPressed flag.
+    setDecimalPressed(false);
+  };
+
   return (
     <View style={styles.container}>
       <Header title={AppStrings.appTitle} />
       <DualDisplay main={currValue} secondary={history} />
-      <CalcKeyboard clearBtnFn={clearBtnHandler} numericBtnFn={numericBtnHandler} />
+      <CalcKeyboard
+        clearBtnFn={clearBtnHandler}
+        numericBtnFn={numericBtnHandler}
+        operatorBtnFn={operatorBtnHandler}
+      />
     </View>
   );
 }
