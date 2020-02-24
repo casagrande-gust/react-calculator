@@ -187,6 +187,7 @@ export default function App() {
       clearBtnHandler();
       return;
     }
+    // Perform operation according to chosen operator.
     let numericResult;
     switch (operator) {
       case '+':
@@ -199,10 +200,12 @@ export default function App() {
         numericResult = a * b;
         break;
       case '/':
+        // Check for safe division.
         if (b) {
           const value = a / b;
           numericResult = Math.floor(value * 100) / 100;
         } else {
+          // If denominator is zero, display error message and abort.
           Alert.alert(
             'Math Error!',
             'You can not divide a number by 0',
@@ -221,6 +224,7 @@ export default function App() {
         clearBtnHandler();
         return;
     }
+    // Update state variables and display result.
     const result = numericResult.toFixed(2);
     setResultValue(result);
     setCurrValue(result);
