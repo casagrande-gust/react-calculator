@@ -67,11 +67,26 @@ export default function App() {
    */
   const [decimalPressed, setDecimalPressed] = useState(false);
 
+  /**
+   * clearBtnHandler
+   *
+   * Executed when user presses the CLEAR button.
+   * Erases all current data.
+   */
+  const clearBtnHandler = () => {
+    setPrevValue('');
+    setOperator('');
+    setCurrValue('');
+    setHistory('');
+    setResultValue('');
+    setDecimalPressed(false);
+  };
+
   return (
     <View style={styles.container}>
       <Header title={AppStrings.appTitle} />
       <DualDisplay />
-      <CalcKeyboard />
+      <CalcKeyboard clearBtnFn={clearBtnHandler} />
     </View>
   );
 }
