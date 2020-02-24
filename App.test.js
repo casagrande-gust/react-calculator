@@ -123,4 +123,16 @@ describe('App Component', () => {
       [{ text: 'Ok', style: 'cancel' }],
     );
   });
+
+  it('should display an error message when trying to add two decimal points to the same value', () => {
+    const spy = jest.spyOn(Alert, 'alert');
+    fireEvent.press(testFuncs.getByText('7'));
+    fireEvent.press(testFuncs.getByText('.'));
+    fireEvent.press(testFuncs.getByText('.'));
+    expect(spy).toHaveBeenCalledWith(
+      'Math Error!',
+      'You can not add two decimal points to the same value',
+      [{ text: 'Ok', style: 'cancel' }],
+    );
+  });
 });
